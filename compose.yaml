@@ -1,0 +1,17 @@
+version: '3.8'  # Ensuring compatibility with newer Docker features
+
+services:
+  mongodb:
+    image: 'mongo:latest'
+#    command: ["mongod", "--replSet", "rs0", "--bind_ip_all"]
+    environment:
+      - MONGO_INITDB_DATABASE=ledger
+      - MONGO_INITDB_ROOT_PASSWORD=root
+      - MONGO_INITDB_ROOT_USERNAME=root
+    ports:
+      - '27017:27017'
+    volumes:
+      - mongodb_data:/data/db  # Persisting MongoDB data
+
+volumes:
+  mongodb_data:
